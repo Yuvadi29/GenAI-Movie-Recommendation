@@ -1,20 +1,10 @@
-import { DataAPIClient } from "@datastax/astra-db-ts";
+import { MongoClient } from 'mongodb';
 
-const { NEXT_PUBLIC_DATASTAX_TOKEN, NEXT_PUBLIC_DATASTAX_URL } = process.env;
+const uri = process.env.NEXT_PUBLIC_MONGO_URL;
+if (!uri) throw new Error('Please add your Mongo URI to .env.local');
 
-if (!NEXT_PUBLIC_DATASTAX_TOKEN || !NEXT_PUBLIC_DATASTAX_URL) {
-    throw new Error("Missing Astra credentials");
-}
+const client = new MongoClient(uri);
 
-// Initialize the client and get a "Db" object
-const client = new DataAPIClient(NEXT_PUBLIC_DATASTAX_TOKEN, {
-    httpOptions: {
-        client: "fetch",
-    },
-});
-
-const db = client.db(NEXT_PUBLIC_DATASTAX_URL);
-
-// console.log(`* Connected to DB ${db.id}`);
+const db = client.connect();
 
 export default db;
