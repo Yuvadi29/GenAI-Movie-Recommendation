@@ -15,10 +15,12 @@ const Page = async () => {
 
 
   return (
-    <div className="grid grid-cols-3 gap-4 p-4">
-      {allMovies.map((movie) => (
-        <MoviePoster key={movie._id} movie={movie} />
-      ))}
+    <div className="flex items-center justify-center pb-24 pt-16">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10">
+        {allMovies.map((movie) => (
+          <MoviePoster key={movie._id} movie={movie} />
+        ))}
+      </div>
     </div>
   );
 };

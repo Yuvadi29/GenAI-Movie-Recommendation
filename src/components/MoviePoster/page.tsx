@@ -1,17 +1,15 @@
 import React from 'react'
 import { Movie } from '../../../types'
-import Image from 'next/image';
+import ImageHolder from '../ImageHolder/page';
 
 const MoviePoster = ({ index, movie }: { index?: number, movie: Movie; }) => {
     return (
         <>
             <div className='relative'>
-                <Image
+                <ImageHolder
                     className='min-w-64 max-w-64 h-96 object-cover rounded-lg shadow-lg'
                     src={movie?.poster}
                     alt={movie?.title}
-                    width={350}
-                    height={450}
                 />
 
                 {index && (
