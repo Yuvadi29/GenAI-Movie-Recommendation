@@ -15,7 +15,7 @@ const ImageHolder = (props: {
             width={300}
             height={450}
             {...props}
-            src={imgSrc}
+            src={imgSrc || "https://davidkoepp.com/wp-content/themes/blankslate/images/Movie%20Placeholder.jpg"}
             onError={() => {
                 setImgSrc(
                     "https://davidkoepp.com/wp-content/themes/blankslate/images/Movie%20Placeholder.jpg"
